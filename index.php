@@ -59,7 +59,7 @@
                         }
                       ?>
                   </div>
-                  <a href='<?=$config['base_url']?>/twitter.php'>Give Twitter Acces</a>
+                  <a href='<?=$config['base_url']?>/twitter.php'>Give Twitter Access</a>
               </td>
           </tr>
           <tr style="background-color: #d1dee9">
@@ -81,7 +81,7 @@
                         }
                       ?>
                   </div>
-                  <a href='<?=$config['base_url']?>/linkedin.php'>Give Linkedin Acces</a>
+                  <a href='<?=$config['base_url']?>/linkedin.php'>Give Linkedin Access</a>
               </td>
           </tr>
       </table>
