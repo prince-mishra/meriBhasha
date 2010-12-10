@@ -3,9 +3,9 @@ Its very easy to install the program.
 
 Requirements:
 1. PHP 5 supported hosting
-2. Basic knowledge to know how to setup an application in facebook visit:
-3. Basic knowledge to know how to setup twitter application. Visit http://thinkdiff.net/category/twitter/
-4. Basic knowledge to know how to setup linkedin application. Visit http://thinkdiff.net/linkedin/integrate-linkedin-api-in-your-site/
+2. Basic knowledge to know how to setup an application in facebook 
+3. Basic knowledge to know how to setup twitter application. 
+4. Basic knowledge to know how to setup linkedin application. 
 
 Steps:
 1. Visit http://www.facebook.com/developers and click setup new application.
