@@ -1,5 +1,7 @@
 Its very easy to install the program.
-
+// TODO
+1. add Google transliteration API feature
+2. add CSS/JS to make it cool
 
 Requirements:
 1. PHP 5 supported hosting
