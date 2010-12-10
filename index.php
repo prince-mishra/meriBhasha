@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
-    <title>Facebook, Twitter & Linkedin Status Update Application</title>
+    <title>meriBhasha: Facebook, Twitter & Linkedin Status Update Application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript">
         var baseUrl =   "<?=$config['base_url']?>";
@@ -17,7 +17,7 @@
     <script type="text/javascript" src="javascript.js"></script>
   </head>
   <body>
-      <h2>Facebook, Twitter & Linkedin Status Update</h2>
+      <h2>meriBhasha: Facebook, Twitter & Linkedin Status Update in any language</h2>
       <div style="float: left; margin-right: 10px">
       <table border="0" cellspacing="3" cellpadding="3">
           <tr style="background-color: #e6e1e1">
@@ -90,9 +90,9 @@
           <form name="fstat" id="fstat" action="<?=$config['base_url']?>/statusupdate.php" method="POST">
               Enter Your Status <span style="font-size: 10px">144 Chars Limit</span><br />
               <textarea name="status" id="status" rows="4" cols="60"></textarea><br />
-              <span style="font-size:12px">(If you give all access then status will update in all sites. </span><br />
+              <span style="font-size:12px">If you give all access then status will update in all sites. </span><br />
               <span style="font-size:12px">We can't update your status in a site if you don't give permission</span><br />
-              <span style="font-size:12px">We don't need password for this)</span><br />
+              <span style="font-size:12px">We don't need password for this</span><br />
               <input type="button" onclick="ajaxCall(); return false;" value="Update Status" />
           </form>
           <br />
@@ -106,9 +106,9 @@
       </div>
       <div style="clear:both"></div>
       <div style="font-size: 14px; text-align: center">
-        <a href="http://code.google.com/p/facebook-twitter-linkedin-status-update/wiki/introduction">Read about this project </a>
+        <a href="https://github.com/prince-mishra/meriBhasha/blob/master/README.txt">Read about this project </a>
         <br />
-        <a href="http://code.google.com/p/facebook-twitter-linkedin-status-update/">Download the code</a>
+        <a href="https://github.com/prince-mishra/meriBhasha/zipball/master">Download the code</a>
       </div>
     <script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"></script>
     <script type="text/javascript">
