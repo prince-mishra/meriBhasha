@@ -154,6 +154,7 @@
                   </div>
               </td>
           </tr>
+          
           <tr style="background-color: #c2cabb">
               <td>
                   <div id="twitinfo" style="display: block">
@@ -198,6 +199,11 @@
                   <a href='<?=$config['base_url']?>/linkedin.php'>Give Linkedin Access</a>
               </td>
           </tr>
+          <tr>
+          	<td>
+    <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fapps%2Fapplication.php%3Fid%3D107990559268706&amp;width=185&amp;colorscheme=light&amp;connections=10&amp;stream=false&amp;header=false&amp;height=255" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:185px; height:255px;" allowTransparency="true"></iframe>
+          	</td> 
+          </tr>
       </table>
       </div>
       
@@ -221,6 +227,7 @@
    	<br />	<span style="font-size:12px">If you give all access then status will update in all sites. </span><br />
               <span style="font-size:12px">We can't update your status in a site if you don't give permission</span><br />
               <span style="font-size:12px">We don't need password for this</span><br />
+              <span style="font-size:12px">We don't store your update messages</span><br />
               
     </form>
     <br><div id="errorDiv"></div>
