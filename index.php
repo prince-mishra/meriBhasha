@@ -15,6 +15,115 @@
     </script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="javascript.js"></script>
+  
+  <! Transliteration Code here>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
+    <script type="text/javascript">
+
+      // Load the Google Transliterate API
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
+
+      var transliterationControl;
+      function onLoad() {
+        var options = {
+            sourceLanguage: 'en',
+            destinationLanguage: ['hi','ar','kn','ml','ta','te'],
+            transliterationEnabled: true,
+            shortcutKey: 'ctrl+g'
+        };
+        // Create an instance on TransliterationControl with the required
+        // options.
+        transliterationControl =
+          new google.elements.transliteration.TransliterationControl(options);
+
+        // Enable transliteration in the textfields with the given ids.
+        var ids = [ "status", "transl2" ];
+        transliterationControl.makeTransliteratable(ids);
+
+        // Add the STATE_CHANGED event handler to correcly maintain the state
+        // of the checkbox.
+        transliterationControl.addEventListener(
+            google.elements.transliteration.TransliterationControl.EventType.STATE_CHANGED,
+            transliterateStateChangeHandler);
+
+        // Add the SERVER_UNREACHABLE event handler to display an error message
+        // if unable to reach the server.
+        transliterationControl.addEventListener(
+            google.elements.transliteration.TransliterationControl.EventType.SERVER_UNREACHABLE,
+            serverUnreachableHandler);
+
+        // Add the SERVER_REACHABLE event handler to remove the error message
+        // once the server becomes reachable.
+        transliterationControl.addEventListener(
+            google.elements.transliteration.TransliterationControl.EventType.SERVER_REACHABLE,
+            serverReachableHandler);
+
+        // Set the checkbox to the correct state.
+        document.getElementById('checkboxId').checked =
+          transliterationControl.isTransliterationEnabled();
+
+        // Populate the language dropdown
+        var destinationLanguage =
+          transliterationControl.getLanguagePair().destinationLanguage;
+        var languageSelect = document.getElementById('languageDropDown');
+        var supportedDestinationLanguages =
+          google.elements.transliteration.getDestinationLanguages(
+            google.elements.transliteration.LanguageCode.ENGLISH);
+        for (var lang in supportedDestinationLanguages) {
+          var opt = document.createElement('option');
+          opt.text = lang;
+          opt.value = supportedDestinationLanguages[lang];
+          if (destinationLanguage == opt.value) {
+            opt.selected = true;
+          }
+          try {
+            languageSelect.add(opt, null);
+          } catch (ex) {
+            languageSelect.add(opt);
+          }
+        }
+      }
+
+      // Handler for STATE_CHANGED event which makes sure checkbox status
+      // reflects the transliteration enabled or disabled status.
+      function transliterateStateChangeHandler(e) {
+        document.getElementById('checkboxId').checked = e.transliterationEnabled;
+      }
+
+      // Handler for checkbox's click event.  Calls toggleTransliteration to toggle
+      // the transliteration state.
+      function checkboxClickHandler() {
+        transliterationControl.toggleTransliteration();
+      }
+
+      // Handler for dropdown option change event.  Calls setLanguagePair to
+      // set the new language.
+      function languageChangeHandler() {
+        var dropdown = document.getElementById('languageDropDown');
+        transliterationControl.setLanguagePair(
+            google.elements.transliteration.LanguageCode.ENGLISH,
+            dropdown.options[dropdown.selectedIndex].value);
+      }
+
+      // SERVER_UNREACHABLE event handler which displays the error message.
+      function serverUnreachableHandler(e) {
+        document.getElementById("errorDiv").innerHTML =
+            "Transliteration Server unreachable";
+      }
+
+      // SERVER_UNREACHABLE event handler which clears the error message.
+      function serverReachableHandler(e) {
+        document.getElementById("errorDiv").innerHTML = "";
+      }
+      google.setOnLoadCallback(onLoad);
+
+    </script>
+  
+  
   </head>
   <body>
       <h2>meriBhasha: Facebook, Twitter & Linkedin Status Update in any language</h2>
@@ -86,10 +195,36 @@
           </tr>
       </table>
       </div>
+      
+      <center>Type in Indian languages (Press Ctrl+g to toggle between English and Hindi)</center>
+    <div id='translControl'>
+      <input type="checkbox" id="checkboxId" onclick="javascript:checkboxClickHandler()"></input>
+      Type in <select id="languageDropDown" onchange="javascript:languageChangeHandler()"></select>
+    </div>
+    <br>Title : <input type='textbox' id="transl1"/>
+    <br>Body<br><textarea id="transl2" style="width:600px;height:200px"></textarea>
+    
+    <form name="fstat" id="fstat" action="<?=$config['base_url']?>/statusupdate.php" method="POST">
+ 	   Enter Your Status <span style="font-size: 10px">144 Chars Limit</span><br />
+ 	   <textarea name="status" id="status" rows="4" cols="60"></textarea><br />
+    		<input type="button" onclick="ajaxCall(); return false;" value="Update Status" />
+    </form>
+    
+    
+    <br><div id="errorDiv"></div>
+      
+      <div id="loader" style="display:none">
+              <img src="<?=$config['base_url']?>/loader.gif" alt="loader" />
+      </div>
+          <div id="result" style="width: 400px; height: 200px; overflow:auto;">
+
+          </div>
+      
       <div style="float: left">
-          <form name="fstat" id="fstat" action="<?=$config['base_url']?>/statusupdate.php" method="POST">
+      	
+          <form name="fstat2" id="fstat2" action="<?=$config['base_url']?>/statusupdate.php" method="POST">
               Enter Your Status <span style="font-size: 10px">144 Chars Limit</span><br />
-              <textarea name="status" id="status" rows="4" cols="60"></textarea><br />
+              <textarea name="status" id="status2" rows="4" cols="60"></textarea><br />
               <span style="font-size:12px">If you give all access then status will update in all sites. </span><br />
               <span style="font-size:12px">We can't update your status in a site if you don't give permission</span><br />
               <span style="font-size:12px">We don't need password for this</span><br />
