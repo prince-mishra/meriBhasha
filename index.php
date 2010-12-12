@@ -41,7 +41,9 @@
           new google.elements.transliteration.TransliterationControl(options);
 
         // Enable transliteration in the textfields with the given ids.
-        var ids = [ "status", "transl2" ];
+        //var ids = [ "status", "transl2" ]; 
+        //In this case I need to have atleast 2 text fields each for each value, otherwise the language select dropdown wont load 
+	var ids = ["status"];
         transliterationControl.makeTransliteratable(ids);
 
         // Add the STATE_CHANGED event handler to correcly maintain the state
@@ -196,48 +198,31 @@
       </table>
       </div>
       
-      <center>Type in Indian languages (Press Ctrl+g to toggle between English and Hindi)</center>
+    <div style="float: left;">
+    <!-- The form starts here---->
+    
     <div id='translControl'>
       <input type="checkbox" id="checkboxId" onclick="javascript:checkboxClickHandler()"></input>
       Type in <select id="languageDropDown" onchange="javascript:languageChangeHandler()"></select>
     </div>
-    <br>Title : <input type='textbox' id="transl1"/>
-    <br>Body<br><textarea id="transl2" style="width:600px;height:200px"></textarea>
     
     <form name="fstat" id="fstat" action="<?=$config['base_url']?>/statusupdate.php" method="POST">
- 	   Enter Your Status <span style="font-size: 10px">144 Chars Limit</span><br />
+ 	  <br /> Your Status Message <span style="font-size: 10px">144 Chars Limit</span><br /><br />
  	   <textarea name="status" id="status" rows="4" cols="60"></textarea><br />
-    		<input type="button" onclick="ajaxCall(); return false;" value="Update Status" />
+	<input type="button" onclick="ajaxCall(); return false;" value="Update Status" />
+   	<br />	<span style="font-size:12px">If you give all access then status will update in all sites. </span><br />
+              <span style="font-size:12px">We can't update your status in a site if you don't give permission</span><br />
+              <span style="font-size:12px">We don't need password for this</span><br />
+              
     </form>
-    
-    
     <br><div id="errorDiv"></div>
-      
       <div id="loader" style="display:none">
               <img src="<?=$config['base_url']?>/loader.gif" alt="loader" />
       </div>
-          <div id="result" style="width: 400px; height: 200px; overflow:auto;">
-
-          </div>
+      <div id="result" style="width: 400px; height: 200px; overflow:auto;">
+      </div>
       
-      <div style="float: left">
-      	
-          <form name="fstat2" id="fstat2" action="<?=$config['base_url']?>/statusupdate.php" method="POST">
-              Enter Your Status <span style="font-size: 10px">144 Chars Limit</span><br />
-              <textarea name="status" id="status2" rows="4" cols="60"></textarea><br />
-              <span style="font-size:12px">If you give all access then status will update in all sites. </span><br />
-              <span style="font-size:12px">We can't update your status in a site if you don't give permission</span><br />
-              <span style="font-size:12px">We don't need password for this</span><br />
-              <input type="button" onclick="ajaxCall(); return false;" value="Update Status" />
-          </form>
-          <br />
-          <div id="loader" style="display:none">
-              <img src="<?=$config['base_url']?>/loader.gif" alt="loader" />
-          </div>
-          <div id="result" style="width: 400px; height: 200px; overflow:auto;">
-
-          </div>
-
+      <!--everything ends--->
       </div>
       <div style="clear:both"></div>
       <div style="font-size: 14px; text-align: center">
