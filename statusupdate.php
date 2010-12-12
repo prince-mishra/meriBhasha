@@ -3,10 +3,12 @@ session_start();
 include_once "config.php";
 include_once "class.fblinkedtwit.php";
 $fblinkedtwit   =   new FbLinkedTwit();
-
+//$promote ='Status in any language : http://aitoss.net/princemishra/meriBhasha/';
 $status = isset($_REQUEST['status']) ? $_REQUEST['status'] : '';
 if (!empty($status)){
-    $status = substr($status, 0, 144);
+    //$status = substr($status, 0, 144);
+     $status = substr($status, 0, 144);
+
 
     //facebook status update
     $fblinkedtwit->facebookStatusUpdate($status);

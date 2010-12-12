@@ -133,8 +133,11 @@
       <table border="0" cellspacing="3" cellpadding="3">
           <tr style="background-color: #e6e1e1">
               <td>
+              
                   <div id="login">
-                    <fb:login-button v="2" size="large" length="long" onlogin="fbcloggedin();"></fb:login-button>
+                  
+                  
+                    <fb:login-button perms="publish_stream, offline_access" v="2" size="large" length="long" onlogin="fbcloggedin();"></fb:login-button>
                   </div>
                   <div id="logout" style="display: none">
                       <b>Facebook Information</b><br />
@@ -146,7 +149,7 @@
                           <a href="#" onclick="FB.Connect.logoutAndRedirect('<?=$config['base_url']?>')">Facebook Logout</a>
                       </div>
                       <div style="clear:both"></div>
-                      <a href="#" onclick="FB.Connect.showPermissionDialog('status_update', '','' ,'' );return false">Give Status Update Permission</a>
+                     <a href="#" onclick="FB.Connect.showPermissionDialog('status_update', '','' ,'' );return false">Give Status Update Permission</a>
                       
                   </div>
               </td>
@@ -200,7 +203,12 @@
       
     <div style="float: left;">
     <!-- The form starts here---->
+    <br />HOW To :
     
+    <br /><br />1. Log in with your Facebook account
+    <br />2. "Give Status Update Permission"
+    <br />3. Choose language and write Status in the textarea
+    <br />4. Update Status<br /><br />
     <div id='translControl'>
       <input type="checkbox" id="checkboxId" onclick="javascript:checkboxClickHandler()"></input>
       Type in <select id="languageDropDown" onchange="javascript:languageChangeHandler()"></select>
